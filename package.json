@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "heroku-postbuild": "yarn run build",
     "format": "prettier --write 'components/**/*' 'pages/**/*'",
-    "start": "next start"
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "isomorphic-unfetch": "^3.0.0",
