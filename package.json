@@ -1,12 +1,21 @@
 {
-  "name": "climatefuture",
-  "version": "1.0.0",
+  "name": "climatefuture-client",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "install": "cd server && yarn install",
-    "start": "cd server && PORT=5000 yarn run start:production"
+    "dev": "next dev",
+    "build": "next build",
+    "format": "prettier --write 'components/**/*' 'pages/**/*'",
+    "start": "next start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kevinsqi/climatefuture.git"
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "9.1.1",
+    "query-string": "^6.8.3",
+    "react": "16.10.2",
+    "react-dom": "16.10.2"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
   }
 }
