@@ -1,5 +1,5 @@
 const API_HOSTS = {
-  development: 'http://localhost:3001',
+  development: process.env.API_HOST || 'http://localhost:3001',
   production: 'http://api.climatefuture.io',
 };
 

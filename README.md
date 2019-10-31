@@ -2,17 +2,21 @@
 
 ## Setup
 
-First, set up and run the backend server with the instructions in [server/README.md](./server/README.md).
+First, set up and run the [climatefuture server](https://github.com/kevinsqi/climatefuture) at localhost:3001.
 
 Then, run the client app:
 
 ```
-cd client
 yarn install
 yarn dev
 ```
 
-Go to http://localhost:3000/location/san-francisco to try it out.
+Go to http://localhost:3000 to view the app.
+
+
+**Alternate frontend-only setup:**
+
+If you don't need to modify server code, you can also run `yarn dev:prod-api` to use the prod API instead of running a local API server at localhost:3001.
 
 
 ## Deployment

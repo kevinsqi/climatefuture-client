@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:prod-api": "API_HOST=http://api.climatefuture.io next dev",
     "build": "next build",
     "heroku-postbuild": "yarn run build",
     "format": "prettier --write 'components/**/*' 'pages/**/*'",
