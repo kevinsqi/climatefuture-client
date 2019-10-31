@@ -15,6 +15,13 @@ a {
  * Utilities
  */
 
+.NavLink--active {
+  color: #fff !important;
+  background-color: #222;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
 .no-underline,
 a.no-underline {
   text-decoration: none;
