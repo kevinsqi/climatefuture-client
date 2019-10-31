@@ -44,3 +44,9 @@ a.no-underline {
 .bg-cream {
   background-color: #f7f6f3;
 }
+
+@media (min-width: 768px) {
+  .min-height-100vh-md {
+    min-height: 100vh;
+  }
+}

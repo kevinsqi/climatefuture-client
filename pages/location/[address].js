@@ -308,16 +308,18 @@ function Sidebar({ geo, query }) {
         <div className="mt-1">
           {[2040, 2060, 2080, 2099].map((year) => {
             return (
-              <a
-                className={classNames('no-underline', {
-                  'font-weight-bold': Number(query.year) === year,
-                })}
-                style={{ color: '#444', fontSize: '1.4em' }}
-                href={`/location/${query.address}?year=${year}`}
-                key={year}
-              >
-                <div>{year}</div>
-              </a>
+              <div className="d-inline-block d-md-block pr-4">
+                <a
+                  className={classNames('no-underline', {
+                    'font-weight-bold': Number(query.year) === year,
+                  })}
+                  style={{ color: '#444', fontSize: '1.4em' }}
+                  href={`/location/${query.address}?year=${year}`}
+                  key={year}
+                >
+                  {year}
+                </a>
+              </div>
             );
           })}
         </div>
@@ -334,12 +336,12 @@ export default function Location({ geo, results, query }) {
       <div className="container-fluid">
         <div className="row">
           <div
-            className="col-4 col-lg-3 bg-cream"
-            style={{ position: 'sticky', minHeight: '100vh' }}
+            className="col-12 col-md-4 col-xl-3 bg-cream min-height-100vh-md"
+            style={{ position: 'sticky' }}
           >
             <Sidebar geo={geo} query={query} />
           </div>
-          <div className="col-8 col-lg-9">
+          <div className="col-12 col-md-8 col-xl-9">
             <div className="px-4 py-4">
               <TemperatureSection results={results} />
               <div style={{ marginTop: 60 }}>
