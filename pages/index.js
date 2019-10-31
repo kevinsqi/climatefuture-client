@@ -33,9 +33,16 @@ function Home() {
                     onChange={(event) => setAddress(event.target.value)}
                   />
                 </form>
+
+                <p className="mt-2 text-center text-secondary small">
+                  Data is sparse right now&mdash;the richest data is in{' '}
+                  <a href="/location/san-francisco">san francisco</a>,{' '}
+                  <a href="/location/dallas">dallas</a>, and{' '}
+                  <a href="/location/new-york">new york</a>.
+                </p>
               </div>
+              <div style={{ paddingBottom: 200 }} />
             </div>
-            <div style={{ paddingBottom: 100 }} />
           </div>
         </div>
         <footer className="container pb-5">
