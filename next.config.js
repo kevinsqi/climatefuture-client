@@ -1,9 +1,7 @@
-const API_HOSTS = {
+const API_HOST = {
   development: process.env.API_HOST || 'http://localhost:3001',
   production: 'http://api.climatefuture.io',
-};
-
-const API_HOST = API_HOSTS[process.env.NODE_ENV];
+}[process.env.NODE_ENV];
 
 if (!API_HOST) {
   throw new Error(`No API host for ${process.env.NODE_ENV}`);
@@ -12,5 +10,6 @@ if (!API_HOST) {
 module.exports = {
   env: {
     API_HOST: API_HOST,
+    GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   },
 };

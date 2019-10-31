@@ -27,6 +27,7 @@ If you don't need to modify server code, you can also run `yarn dev:prod-api` to
 * Add domains:
   * Add DNS records to point @ and www to dokku instance
   * `dokku domains:add climatefuture-client climatefuture.io www.climatefuture.io`
+* Set environment variables: `dokku config:set climatefuture-client GOOGLE_ANALYTICS_TRACKING_ID=<value>`
 
 Setting up https with `dokku-letsencrypt` and [this guide](https://medium.com/@pimterry/effortlessly-add-https-to-dokku-with-lets-encrypt-900696366890):
 
