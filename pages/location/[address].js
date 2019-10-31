@@ -331,8 +331,8 @@ export default function Location({ geo, results, query }) {
       <div className="container-fluid">
         <div className="row">
           <div
-            className="col-4 col-lg-3"
-            style={{ position: 'sticky', background: 'rgb(234, 234, 234)', minHeight: '100vh' }}
+            className="col-4 col-lg-3 bg-cream"
+            style={{ position: 'sticky', minHeight: '100vh' }}
           >
             <Sidebar geo={geo} query={query} />
           </div>
