@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import queryString from 'query-string';
+import classNames from 'classnames';
 
 import Head from '../../components/Head';
 
@@ -26,13 +27,13 @@ function Methodology(props) {
         </div>
         <div>
           <a className="text-secondary" href="https://github.com/kevinsqi/climatefuture">
-            View source code.
+            View source code
           </a>{' '}
           <a
             className="text-secondary"
             href="https://github.com/kevinsqi/climatefuture/tree/master/server/data"
           >
-            View data sources.
+            View data sources
           </a>
         </div>
       </div>
@@ -286,7 +287,7 @@ function Sidebar({ geo, query }) {
     <div className="d-flex flex-column px-3 py-4" style={{ height: '100%' }}>
       <div style={{ flex: 1 }}>
         <div>
-          <a href="/" className="text-secondary style-uppercase">
+          <a href="/" className="no-underline text-secondary style-uppercase">
             🔥 ClimateFuture
           </a>
         </div>
@@ -308,7 +309,9 @@ function Sidebar({ geo, query }) {
           {[2040, 2060, 2080, 2099].map((year) => {
             return (
               <a
-                className={Number(query.year) === year ? 'font-weight-bold' : ''}
+                className={classNames('no-underline', {
+                  'font-weight-bold': Number(query.year) === year,
+                })}
                 style={{ color: '#444', fontSize: '1.4em' }}
                 href={`/location/${query.address}?year=${year}`}
                 key={year}

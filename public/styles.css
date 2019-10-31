@@ -1,3 +1,21 @@
+/*
+ * Overrides
+ */
+
+a {
+  color: #212529 !important;
+  text-decoration: underline;
+}
+
+/*
+ * Utilities
+ */
+
+.no-underline,
+a.no-underline {
+  text-decoration: none;
+}
+
 .superscript {
   line-height: 1;
   font-size: 13px;

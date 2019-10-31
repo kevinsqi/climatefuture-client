@@ -38,8 +38,10 @@ function Home() {
             <div style={{ paddingBottom: 100 }} />
           </div>
         </div>
-        <footer className="container py-4">
-          <div className="text-center"></div>
+        <footer className="container pb-5">
+          <div className="text-center">
+            <a href="/about">About</a>
+          </div>
         </footer>
       </div>
     </div>
