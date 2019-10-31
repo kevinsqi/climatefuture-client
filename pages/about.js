@@ -9,7 +9,7 @@ function About() {
         <div className="flex-1 d-flex flex-column justify-content-center align-items-center">
           <div className="container">
             <div className="row">
-              <div className="col-12 col-md-6 offset-md-2">
+              <div className="col-12 col-md-6 offset-md-1">
                 <h2 className="h3 font-weight-bold">About ClimateFuture</h2>
 
                 <p className="mt-4">
@@ -30,7 +30,7 @@ function About() {
                   greenhouse gas concentration scenarios.
                 </p>
                 <div className="mt-5">
-                  <a href="/">Back to home</a>
+                  <a href="/">← Home</a>
                 </div>
               </div>
             </div>
