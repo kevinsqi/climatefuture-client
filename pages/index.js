@@ -17,7 +17,8 @@ function Home() {
         <div className="container">
           <div className="text-center">
             <div className="h1">🔥</div>
-            <h1 className="h2 font-weight-bold">ClimateFuture</h1>
+            <h1 className="d-inline-block h2 font-weight-bold">ClimateFuture</h1>
+            <sup className="superscript">Alpha</sup>
             <p>Climate change projections for where you live.</p>
           </div>
           <div className="row">

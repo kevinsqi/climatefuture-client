@@ -1,3 +1,11 @@
+.superscript {
+  line-height: 1;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: red;
+  top: -1em;
+}
+
 .style-uppercase {
   font-size: 13px;
   text-transform: uppercase;
