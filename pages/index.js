@@ -20,7 +20,7 @@ function Home() {
               <div className="h1">🔥</div>
               <h1 className="d-inline-block h2 font-weight-bold">ClimateFuture</h1>
               <sup className="superscript">Alpha</sup>
-              <p>Climate change projections for where you live.</p>
+              <p>See the projected impacts of climate change for where you live.</p>
             </div>
             <div className="row">
               <div className="col-12 col-md-6 offset-md-3">
