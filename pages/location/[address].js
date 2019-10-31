@@ -50,9 +50,7 @@ function FloodingSection(props) {
   const showAdvice = Number(rcp45) >= 0.1;
   return (
     <div className={props.className}>
-      <h3 className="font-weight-bold" style={{ fontSize: '2.2em' }}>
-        🌊 Coastal flooding
-      </h3>
+      <h3 className="h1 font-weight-bold">🌊 Coastal Flooding</h3>
       <div className="mt-4">
         <div className="row">
           <div className="col-4">
@@ -115,9 +113,7 @@ function PrecipitationSection(props) {
   const unit = 'dry days';
   return (
     <div className={props.className}>
-      <h3 className="font-weight-bold" style={{ fontSize: '2.2em' }}>
-        🌧️ Precipitation
-      </h3>
+      <h3 className="h1 font-weight-bold">🌧️ Precipitation</h3>
       <div className="mt-4">
         <div className="row">
           <div className="col-4">
@@ -249,9 +245,7 @@ function TemperatureSection(props) {
     num_days_above_100f.rcp85_weighted_mean - num_days_above_100f.historical_average > 10;
   return (
     <div>
-      <h3 className="font-weight-bold" style={{ fontSize: '2.2em' }}>
-        🔥 Temperature
-      </h3>
+      <h3 className="h1 font-weight-bold">🔥 Temperature</h3>
       <div className="mt-4">
         <DataHeader />
         <Temperature result={temperature_increase} />
@@ -300,20 +294,17 @@ function Sidebar({ geo, query }) {
             onChange={(event) => setAddress(event.target.value)}
           />
         </form>
-        <h2 className="mt-3 font-weight-bold" style={{ fontSize: '1.6em' }}>
-          {geo.formatted_address}
-        </h2>
+        <h2 className="h4 font-weight-bold mt-3">{geo.formatted_address}</h2>
         <hr />
         <div className="text-secondary style-uppercase">Projections for</div>
-        <div className="mt-1">
+        <div className="mt-3">
           {[2040, 2060, 2080, 2099].map((year) => {
             return (
-              <div className="d-inline-block d-md-block pr-4">
+              <div className="d-inline-block d-md-block pr-4 mt-1">
                 <a
-                  className={classNames('no-underline', {
+                  className={classNames('no-underline h4 font-weight-normal', {
                     'font-weight-bold': Number(query.year) === year,
                   })}
-                  style={{ color: '#444', fontSize: '1.4em' }}
                   href={`/location/${query.address}?year=${year}`}
                   key={year}
                 >
@@ -374,6 +365,7 @@ Location.getInitialProps = async function(context) {
   return {
     query: query,
     geo: data.geo,
+    // Transform results from an array to an object
     results: data.results.reduce((obj, result) => {
       obj[result.attribute] = result;
       return obj;

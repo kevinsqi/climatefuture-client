@@ -2,6 +2,10 @@
  * Overrides
  */
 
+h1, .h1 {
+  font-size: 2em;
+}
+
 a {
   color: #212529 !important;
   text-decoration: underline;
