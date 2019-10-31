@@ -1,10 +1,9 @@
 import React from 'react';
-import Head from 'next/head';
-import Nav from '../../components/nav';
-
 import { useRouter } from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import queryString from 'query-string';
+
+import Head from '../../components/Head';
 
 const DEFAULT_YEAR = 2080;
 
@@ -286,8 +285,10 @@ function Sidebar({ geo, query }) {
   return (
     <div className="d-flex flex-column px-3 py-4" style={{ height: '100%' }}>
       <div style={{ flex: 1 }}>
-        <div className="text-secondary" style={{ textTransform: 'uppercase', fontSize: 13 }}>
-          ClimateFuture
+        <div>
+          <a href="/" className="text-secondary style-uppercase">
+            🔥 ClimateFuture
+          </a>
         </div>
         <form className="mt-2" onSubmit={onSubmit}>
           <input
@@ -302,9 +303,7 @@ function Sidebar({ geo, query }) {
           {geo.formatted_address}
         </h2>
         <hr />
-        <div className="text-secondary" style={{ textTransform: 'uppercase', fontSize: 13 }}>
-          Projections for
-        </div>
+        <div className="text-secondary style-uppercase">Projections for</div>
         <div className="mt-1">
           {[2040, 2060, 2080, 2099].map((year) => {
             return (
@@ -327,14 +326,7 @@ function Sidebar({ geo, query }) {
 export default function Location({ geo, results, query }) {
   return (
     <div>
-      <Head>
-        <title>{geo.formatted_address} | ClimateFuture</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        />
-      </Head>
+      <Head title={`${geo.formatted_address} | ClimateFuture`} />
 
       <div className="container-fluid">
         <div className="row">

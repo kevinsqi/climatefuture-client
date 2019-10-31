@@ -1,6 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
-import Nav from '../components/nav';
+import Head from '../components/Head';
 
 function Home() {
   const [address, setAddress] = React.useState('');
@@ -13,29 +12,28 @@ function Home() {
 
   return (
     <div>
-      <Head>
-        <title>ClimateFuture | Climate change projections for your location</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        />
-        <link rel="stylesheet" href="/styles.css" />
-      </Head>
-
-      <div className="container">
-        <div className="height-100vh d-flex flex-column justify-content-center align-items-center">
-          <h1>ClimateFuture</h1>
-
-          <form onSubmit={onSubmit}>
-            <input
-              className="form-control"
-              type="text"
-              value={address}
-              placeholder="City, address, or zip"
-              onChange={(event) => setAddress(event.target.value)}
-            />
-          </form>
+      <Head title="ClimateFuture | Climate change projections for your location" />
+      <div className="height-100vh d-flex flex-column justify-content-center align-items-center">
+        <div className="container">
+          <div className="text-center">
+            <div className="h1">🔥</div>
+            <h1 className="h2 font-weight-bold">ClimateFuture</h1>
+            <p>Climate change projections for where you live.</p>
+          </div>
+          <div className="row">
+            <div className="col-12 col-md-6 offset-md-3">
+              <form className="mt-4" onSubmit={onSubmit}>
+                <input
+                  className="form-control form-control-lg text-center"
+                  type="text"
+                  value={address}
+                  placeholder="City, address, or zip"
+                  onChange={(event) => setAddress(event.target.value)}
+                />
+              </form>
+            </div>
+          </div>
+          <div style={{ paddingBottom: 100 }} />
         </div>
       </div>
     </div>

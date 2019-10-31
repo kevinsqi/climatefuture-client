@@ -1,3 +1,8 @@
+.style-uppercase {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
 .height-full {
   height: 100%;
 }
