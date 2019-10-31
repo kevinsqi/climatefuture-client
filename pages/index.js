@@ -48,6 +48,9 @@ function Home() {
         <footer className="container pb-5">
           <div className="text-center">
             <a href="/about">About</a>
+            <a className="ml-3" href="https://github.com/kevinsqi/climatefuture">
+              Github
+            </a>
           </div>
         </footer>
       </div>
