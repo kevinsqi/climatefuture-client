@@ -34,13 +34,12 @@ function Sidebar({ geo, query }) {
           {[2040, 2060, 2080, 2099].map((year) => {
             const isCurrentYear = Number(query.year) === year;
             return (
-              <div className="d-inline-block d-md-block pr-4 mt-2">
+              <div className="d-inline-block d-md-block pr-4 mt-2" key={year}>
                 <a
                   className={classNames('NavLink no-underline h4 font-weight-normal', {
                     'NavLink--active': isCurrentYear,
                   })}
                   href={`/location/${query.address}?year=${year}`}
-                  key={year}
                 >
                   {year}
                 </a>
