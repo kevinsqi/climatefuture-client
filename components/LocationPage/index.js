@@ -149,13 +149,13 @@ export function TemperatureSection(props) {
     temp_num_days_above_90f,
     temp_num_days_above_100f,
     temp_num_days_below_32f,
-    temp_max_avg,
+    temp_avg,
   } = props.results;
   if (
     !temp_num_days_above_90f &&
     !temp_num_days_above_100f &&
-    !temp_max_avg &&
-    !temp_num_days_below_32f
+    !temp_num_days_below_32f &&
+    !temp_avg
   ) {
     return null;
   }
@@ -168,7 +168,7 @@ export function TemperatureSection(props) {
       <h3 className="h1 font-weight-bold">🔥 Temperature</h3>
       <div className="mt-4">
         <DataHeader />
-        <AcisResult result={temp_max_avg} unit="°F highs" />
+        <AcisResult result={temp_avg} unit="°F" />
         <AcisResult result={temp_num_days_above_90f} unit="days >90°F" className="mt-2" />
         <AcisResult result={temp_num_days_above_100f} unit="days >100°F" className="mt-2" />
         <AcisResult result={temp_num_days_below_32f} unit="days <32°F" className="mt-2" />
