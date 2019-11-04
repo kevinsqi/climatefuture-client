@@ -61,3 +61,11 @@ a.no-underline {
     min-height: 100vh;
   }
 }
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.text-11 {
+  font-size: 1.1em;
+}

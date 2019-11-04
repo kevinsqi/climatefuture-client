@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 export const SCENARIOS = {
   RCP_26: 'Optimistic case',
@@ -37,7 +38,7 @@ function DataHeader(props) {
 function DataNumber({ label, value, description }) {
   return (
     <div>
-      <div className="small text-secondary font-weight-bold">{label}</div>
+      <div className="small text-secondary font-weight-600">{label}</div>
       <div style={{ fontSize: 25 }}>{value}</div>
       <div className="small text-secondary">{description}</div>
     </div>
@@ -100,20 +101,18 @@ export function FloodingSection(props) {
       {showAdvice && (
         <React.Fragment>
           <div className="mt-5">
-            <div className="small text-secondary font-weight-bold">
+            <div className="small text-secondary font-weight-600">
               How can I prepare short-term?
             </div>
-            <div className="mt-2" style={{ fontSize: '1.2em', fontWeight: 600 }}>
+            <div className="mt-2 font-weight-600 text-11">
               <div>Have backup food, water, and medical supplies.</div>
               <div>Unplug electrical equipment that might contact flood water.</div>
               <div>Be careful of carbon monoxide poisoning when using portable generators.</div>
             </div>
           </div>
           <div className="mt-5">
-            <div className="small text-secondary font-weight-bold">
-              How can I prepare long-term?
-            </div>
-            <div className="mt-2" style={{ fontSize: '1.2em', fontWeight: 600 }}>
+            <div className="small text-secondary font-weight-600">How can I prepare long-term?</div>
+            <div className="mt-2 font-weight-600 text-11">
               <div>
                 Check if your home is in a floodplain at <a href="https://msc.fema.gov">FEMA</a>.
               </div>
@@ -160,18 +159,16 @@ export function TemperatureSection(props) {
       <div className="mt-4">
         <DataHeader />
         <AcisResult result={temp_max_avg} unit="°F highs" />
-        <div className="mt-2">
-          <AcisResult result={temp_num_days_above_100f} unit="days >100°F" />
-        </div>
+        <AcisResult result={temp_num_days_above_100f} unit="days >100°F" className="mt-2" />
       </div>
       {showAdvice && (
         <div className="mt-5">
-          <div className="small text-secondary font-weight-bold">How can I prepare?</div>
-          <div className="mt-2" style={{ fontSize: '1.2em', fontWeight: 600 }}>
-            <div>Insulate windows.</div>
-            <div>Install temporary window reflectors.</div>
-            <div>Install cool or green roofs.</div>
-            <div>Support planting trees to provide shade and cooler air.</div>
+          <div className="small text-secondary font-weight-600">How can I prepare?</div>
+          <div className="mt-2 font-weight-600 text-11">
+            <div>🏠 Insulate windows.</div>
+            <div>🏠 Install temporary window reflectors.</div>
+            <div>🏠 Install cool or green roofs.</div>
+            <div>🌲 Support planting trees to provide shade and cooler air.</div>
           </div>
         </div>
       )}
@@ -179,13 +176,13 @@ export function TemperatureSection(props) {
   );
 }
 
-function AcisResult({ result, unit }) {
+function AcisResult({ result, unit, className }) {
   if (!result) {
     return null;
   }
   const { rcp45_mean, rcp85_mean, historical_average } = result;
   return (
-    <div className="row">
+    <div className={classNames('row', className)}>
       <div className="col-4">
         <DataNumber value="--" />
       </div>
