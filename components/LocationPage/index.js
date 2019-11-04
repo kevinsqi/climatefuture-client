@@ -128,25 +128,35 @@ export function FloodingSection(props) {
 }
 
 export function PrecipitationSection(props) {
-  const { precipitation_num_dry_days } = props.results;
-  if (!precipitation_num_dry_days) {
+  const { precipitation_total, precipitation_num_dry_days } = props.results;
+  if (!precipitation_num_dry_days && !precipitation_total) {
     return null;
   }
-  const { rcp45_mean, rcp85_mean, historical_average } = precipitation_num_dry_days;
-  const unit = 'dry days';
   return (
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌧️ Precipitation</h3>
       <div className="mt-4">
-        <AcisResult result={precipitation_num_dry_days} unit="dry days" />
+        <DataHeader />
+        <AcisResult result={precipitation_total} unit="in" />
+        <AcisResult result={precipitation_num_dry_days} unit="dry days" className="mt-2" />
       </div>
     </div>
   );
 }
 
 export function TemperatureSection(props) {
-  const { temp_num_days_above_100f, temp_max_avg } = props.results;
-  if (!temp_num_days_above_100f && !temp_max_avg) {
+  const {
+    temp_num_days_above_90f,
+    temp_num_days_above_100f,
+    temp_num_days_below_32f,
+    temp_max_avg,
+  } = props.results;
+  if (
+    !temp_num_days_above_90f &&
+    !temp_num_days_above_100f &&
+    !temp_max_avg &&
+    !temp_num_days_below_32f
+  ) {
     return null;
   }
   // TODO: methodology
@@ -159,7 +169,9 @@ export function TemperatureSection(props) {
       <div className="mt-4">
         <DataHeader />
         <AcisResult result={temp_max_avg} unit="°F highs" />
+        <AcisResult result={temp_num_days_above_90f} unit="days >90°F" className="mt-2" />
         <AcisResult result={temp_num_days_above_100f} unit="days >100°F" className="mt-2" />
+        <AcisResult result={temp_num_days_below_32f} unit="days <32°F" className="mt-2" />
       </div>
       {showAdvice && (
         <div className="mt-5">
