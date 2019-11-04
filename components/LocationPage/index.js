@@ -9,13 +9,13 @@ export const SCENARIOS = {
 function formatTempChange(diff) {
   const num = (Number(diff) * 9) / 5;
   const marker = Math.abs(num) < 0.1 ? '' : num > 0 ? '▲' : '▼';
-  return `${marker} ${num.toFixed(1)}° F`;
+  return `${marker} ${parseFloat(num.toFixed(1))}° F`;
 }
 
 function formatNumberChange(diff, unit) {
   const num = Number(diff);
   const marker = Math.abs(num) < 0.1 ? '' : num > 0 ? '▲' : '▼';
-  return `${marker} ${num.toFixed(1)} ${unit}`;
+  return `${marker} ${parseFloat(num.toFixed(1))} ${unit}`;
 }
 
 function DataHeader(props) {
@@ -147,8 +147,8 @@ export function PrecipitationSection(props) {
             <DataNumber
               label={SCENARIOS.RCP_45}
               value={formatNumberChange(rcp45_mean - historical_average, unit)}
-              description={`Relative to historical average of ${historical_average.toFixed(
-                1,
+              description={`Relative to historical average of ${parseFloat(
+                historical_average.toFixed(1),
               )} days`}
             />
           </div>
@@ -156,8 +156,8 @@ export function PrecipitationSection(props) {
             <DataNumber
               label={SCENARIOS.RCP_85}
               value={formatNumberChange(rcp85_mean - historical_average, unit)}
-              description={`Relative to historical average of ${historical_average.toFixed(
-                1,
+              description={`Relative to historical average of ${parseFloat(
+                historical_average.toFixed(1),
               )} days`}
             />
           </div>
@@ -241,13 +241,17 @@ function NumDaysAbove100F(props) {
       <div className="col-4">
         <DataNumber
           value={formatNumberChange(rcp45_mean - historical_average, unit)}
-          description={`Relative to historical average of ${historical_average.toFixed(1)} days`}
+          description={`Relative to historical average of ${parseFloat(
+            historical_average.toFixed(1),
+          )} days`}
         />
       </div>
       <div className="col-4">
         <DataNumber
           value={formatNumberChange(rcp85_mean - historical_average, unit)}
-          description={`Relative to historical average of ${historical_average.toFixed(1)} days`}
+          description={`Relative to historical average of ${parseFloat(
+            historical_average.toFixed(1),
+          )} days`}
         />
       </div>
     </div>
