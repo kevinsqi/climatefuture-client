@@ -145,35 +145,9 @@ export function PrecipitationSection(props) {
   );
 }
 
-function Temperature(props) {
-  if (!props.result) {
-    return null;
-  }
-  const {
-    year_start,
-    year_end,
-    model_26_warming,
-    model_45_warming,
-    model_85_warming,
-  } = props.result;
-  return (
-    <div className="row">
-      <div className="col-4">
-        <DataNumber value={formatTempChange(model_26_warming)} />
-      </div>
-      <div className="col-4">
-        <DataNumber value={formatTempChange(model_45_warming)} />
-      </div>
-      <div className="col-4">
-        <DataNumber value={formatTempChange(model_85_warming)} />
-      </div>
-    </div>
-  );
-}
-
 export function TemperatureSection(props) {
-  const { temperature_increase, temp_num_days_above_100f } = props.results;
-  if (!temperature_increase && !temp_num_days_above_100f) {
+  const { temp_num_days_above_100f, temp_max_avg } = props.results;
+  if (!temp_num_days_above_100f && !temp_max_avg) {
     return null;
   }
   // TODO: methodology
@@ -185,7 +159,7 @@ export function TemperatureSection(props) {
       <h3 className="h1 font-weight-bold">🔥 Temperature</h3>
       <div className="mt-4">
         <DataHeader />
-        <Temperature result={temperature_increase} />
+        <AcisResult result={temp_max_avg} unit="°F highs" />
         <div className="mt-2">
           <AcisResult result={temp_num_days_above_100f} unit="days >100°F" />
         </div>
@@ -220,7 +194,7 @@ function AcisResult({ result, unit }) {
           value={formatNumberChange(rcp45_mean - historical_average, unit)}
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
-          )} days`}
+          )} ${unit}`}
         />
       </div>
       <div className="col-4">
@@ -228,7 +202,7 @@ function AcisResult({ result, unit }) {
           value={formatNumberChange(rcp85_mean - historical_average, unit)}
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
-          )} days`}
+          )} ${unit}`}
         />
       </div>
     </div>
