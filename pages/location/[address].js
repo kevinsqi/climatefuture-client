@@ -29,12 +29,6 @@ function Methodology(props) {
           <a className="text-secondary" href="https://github.com/kevinsqi/climatefuture">
             View source code
           </a>{' '}
-          <a
-            className="text-secondary"
-            href="https://github.com/kevinsqi/climatefuture/tree/master/server/data"
-          >
-            View data sources
-          </a>
         </div>
       </div>
     </div>
