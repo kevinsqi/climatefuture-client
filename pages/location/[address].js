@@ -10,7 +10,6 @@ import {
   Methodology,
   PrecipitationSection,
   SCENARIOS,
-  Temperature,
   TemperatureSection,
 } from '../../components/LocationPage';
 

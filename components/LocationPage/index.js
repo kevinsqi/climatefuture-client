@@ -139,35 +139,13 @@ export function PrecipitationSection(props) {
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌧️ Precipitation</h3>
       <div className="mt-4">
-        <div className="row">
-          <div className="col-4">
-            <DataNumber label={SCENARIOS.RCP_26} value="--" />
-          </div>
-          <div className="col-4">
-            <DataNumber
-              label={SCENARIOS.RCP_45}
-              value={formatNumberChange(rcp45_mean - historical_average, unit)}
-              description={`Relative to historical average of ${parseFloat(
-                historical_average.toFixed(1),
-              )} days`}
-            />
-          </div>
-          <div className="col-4">
-            <DataNumber
-              label={SCENARIOS.RCP_85}
-              value={formatNumberChange(rcp85_mean - historical_average, unit)}
-              description={`Relative to historical average of ${parseFloat(
-                historical_average.toFixed(1),
-              )} days`}
-            />
-          </div>
-        </div>
+        <AcisResult result={precipitation_num_dry_days} unit="dry days" />
       </div>
     </div>
   );
 }
 
-export function Temperature(props) {
+function Temperature(props) {
   if (!props.result) {
     return null;
   }
@@ -209,7 +187,7 @@ export function TemperatureSection(props) {
         <DataHeader />
         <Temperature result={temperature_increase} />
         <div className="mt-2">
-          <NumDaysAbove100F result={temp_num_days_above_100f} />
+          <AcisResult result={temp_num_days_above_100f} unit="days >100°F" />
         </div>
       </div>
       {showAdvice && (
@@ -227,12 +205,11 @@ export function TemperatureSection(props) {
   );
 }
 
-function NumDaysAbove100F(props) {
-  if (!props.result) {
+function AcisResult({ result, unit }) {
+  if (!result) {
     return null;
   }
-  const { rcp45_mean, rcp85_mean, historical_average } = props.result;
-  const unit = 'days >100°F';
+  const { rcp45_mean, rcp85_mean, historical_average } = result;
   return (
     <div className="row">
       <div className="col-4">
