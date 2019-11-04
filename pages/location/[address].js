@@ -18,7 +18,9 @@ const DEFAULT_YEAR = 2080;
 export default function Location({ geo, results, query }) {
   return (
     <div>
-      <Head title={`${geo.formatted_address} | ClimateFuture`} />
+      <Head
+        title={`Projected climate change impacts for ${geo.formatted_address} in ${query.year} | ClimateFuture`}
+      />
 
       <div className="container-fluid">
         <div className="row">
