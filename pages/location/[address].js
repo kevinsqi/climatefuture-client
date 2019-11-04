@@ -4,14 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import queryString from 'query-string';
 
 import Head from '../../components/Head';
-import Sidebar from '../../components/Sidebar';
-import {
-  FloodingSection,
-  Methodology,
-  PrecipitationSection,
-  SCENARIOS,
-  TemperatureSection,
-} from '../../components/LocationPage';
+import { LocationPage } from '../../components/LocationPage';
 
 const DEFAULT_YEAR = 2080;
 
@@ -21,32 +14,7 @@ export default function Location({ geo, results, query }) {
       <Head
         title={`Projected climate change impacts for ${geo.formatted_address} in ${query.year} | ClimateFuture`}
       />
-
-      <div className="container-fluid">
-        <div className="row">
-          <div
-            className="col-12 col-md-4 col-xl-3 bg-cream min-height-100vh-md"
-            style={{ position: 'sticky' }}
-          >
-            <Sidebar geo={geo} query={query} />
-          </div>
-          <div className="col-12 col-md-8 col-xl-9">
-            <div className="px-4 py-4">
-              <TemperatureSection results={results} />
-              <div style={{ marginTop: 60 }}>
-                <FloodingSection results={results} />
-              </div>
-              <div style={{ marginTop: 60 }}>
-                <PrecipitationSection results={results} />
-              </div>
-              <div style={{ marginTop: 60 }}>
-                <hr />
-              </div>
-              <Methodology className="mt-4" />
-            </div>
-          </div>
-        </div>
-      </div>
+      <LocationPage geo={geo} results={results} query={query} />
     </div>
   );
 }
