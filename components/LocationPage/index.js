@@ -62,7 +62,7 @@ export function FloodingSection(props) {
   return (
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌊 Coastal Flooding</h3>
-      <div className="mt-4">
+      <div className="mt-5">
         <div className="row no-gutters mx-n1">
           <div className="col-4 d-flex px-1">
             <DataNumber
@@ -90,25 +90,23 @@ export function FloodingSection(props) {
       {showAdvice && (
         <React.Fragment>
           <div className="mt-5">
-            <div className="small text-secondary font-weight-600">
-              How can I prepare short-term?
-            </div>
-            <div className="mt-2 font-weight-600 text-11">
-              <div>Have backup food, water, and medical supplies.</div>
-              <div>Unplug electrical equipment that might contact flood water.</div>
-              <div>Be careful of carbon monoxide poisoning when using portable generators.</div>
-            </div>
+            <h4>How can I prepare short-term?</h4>
+            <ul className="list-unstyled font-weight-600 small">
+              <li>Have backup food, water, and medical supplies.</li>
+              <li>Unplug electrical equipment that might contact flood water.</li>
+              <li>Be careful of carbon monoxide poisoning when using portable generators.</li>
+            </ul>
           </div>
           <div className="mt-5">
-            <div className="small text-secondary font-weight-600">How can I prepare long-term?</div>
-            <div className="mt-2 font-weight-600 text-11">
-              <div>
+            <h4>How can I prepare long-term?</h4>
+            <ul className="list-unstyled font-weight-600 small">
+              <li>
                 Check if your home is in a floodplain at <a href="https://msc.fema.gov">FEMA</a>.
-              </div>
-              <div>Check if your home was built with flood damage-resistant materials.</div>
-              <div>Check if there are community floodwalls or levees.</div>
-              <div>Support local government in developing flood control plans.</div>
-            </div>
+              </li>
+              <li>Check if your home was built with flood damage-resistant materials.</li>
+              <li>Check if there are community floodwalls or levees.</li>
+              <li>Support local government in developing flood control plans.</li>
+            </ul>
           </div>
         </React.Fragment>
       )}
@@ -124,9 +122,13 @@ export function PrecipitationSection(props) {
   return (
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌧️ Precipitation</h3>
+      <div className="mt-5">
+        <h4>How could the amount of precipitation (rain or snow) change?</h4>
+        <AcisResult className="mt-2" result={precipitation_total} unit="in" />
+      </div>
       <div className="mt-4">
-        <AcisResult result={precipitation_total} unit="in" />
-        <AcisResult result={precipitation_num_dry_days} unit="dry days" className="mt-2" />
+        <h4>How could the number of dry days change?</h4>
+        <AcisResult className="mt-2" result={precipitation_num_dry_days} unit="days" />
       </div>
     </div>
   );
@@ -154,21 +156,37 @@ export function TemperatureSection(props) {
   return (
     <div>
       <h3 className="h1 font-weight-bold">🔥 Temperature</h3>
+      <div className="mt-5">
+        <h4>How could the temperature change?</h4>
+        <AcisResult className="mt-2" result={temp_avg} unit="°F" />
+      </div>
       <div className="mt-4">
-        <AcisResult result={temp_avg} unit="°F" />
-        <AcisResult result={temp_num_days_above_90f} unit="days >90°F" className="mt-2" />
-        <AcisResult result={temp_num_days_above_100f} unit="days >100°F" className="mt-2" />
-        <AcisResult result={temp_num_days_below_32f} unit="days <32°F" className="mt-2" />
+        <h4>How many days could be hotter than 90°F?</h4>
+        <AcisResult
+          className="mt-2"
+          result={temp_num_days_above_90f}
+          unit="days"
+          className="mt-2"
+        />
+      </div>
+      <div className="mt-4">
+        <h4>How many days could be hotter than 100°F?</h4>
+        <AcisResult
+          className="mt-2"
+          result={temp_num_days_above_100f}
+          unit="days"
+          className="mt-2"
+        />
       </div>
       {showAdvice && (
-        <div className="mt-5">
-          <div className="small text-secondary font-weight-600">How can I prepare?</div>
-          <div className="mt-2 font-weight-600 text-11">
-            <div>🏠 Insulate windows.</div>
-            <div>🏠 Install temporary window reflectors.</div>
-            <div>🏠 Install cool or green roofs.</div>
-            <div>🌲 Support planting trees to provide shade and cooler air.</div>
-          </div>
+        <div className="mt-4">
+          <h4>How can I prepare?</h4>
+          <ul className="list-unstyled font-weight-600 small">
+            <li>🏠 Insulate windows.</li>
+            <li>🏠 Install temporary window reflectors.</li>
+            <li>🏠 Install cool or green roofs.</li>
+            <li>🌲 Support planting trees to provide shade and cooler air.</li>
+          </ul>
         </div>
       )}
     </div>

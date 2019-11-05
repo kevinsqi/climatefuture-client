@@ -6,6 +6,11 @@ h1, .h1 {
   font-size: 2em;
 }
 
+h4, .h4 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
 a {
   color: #212529 !important;
   text-decoration: underline;
@@ -57,6 +62,10 @@ a.no-underline {
   .min-height-100vh-md {
     min-height: 100vh;
   }
+}
+
+.font-weight-500 {
+  font-weight: 500;
 }
 
 .font-weight-600 {
