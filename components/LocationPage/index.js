@@ -63,29 +63,8 @@ export function FloodingSection(props) {
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌊 Coastal Flooding</h3>
       <div className="mt-5">
-        <div className="row no-gutters mx-n1">
-          <div className="col-4 d-flex px-1">
-            <DataNumber
-              className="flex-1"
-              label={SCENARIOS.RCP_26}
-              value={`${Math.round(rcp26 * 100)}% chance > 5ft`}
-            />
-          </div>
-          <div className="col-4 d-flex px-1">
-            <DataNumber
-              className="flex-1"
-              label={SCENARIOS.RCP_45}
-              value={`${Math.round(rcp45 * 100)}% chance > 5ft`}
-            />
-          </div>
-          <div className="col-4 d-flex px-1">
-            <DataNumber
-              className="flex-1"
-              label={SCENARIOS.RCP_85}
-              value={`${Math.round(rcp85 * 100)}% chance > 5ft`}
-            />
-          </div>
-        </div>
+        <h4>What's the chance of a 5+ foot flood within 1 year?</h4>
+        <Result result={coastal_flooding_single_year_5ft} />
       </div>
       {showAdvice && (
         <React.Fragment>
@@ -221,6 +200,35 @@ function RelativeResult({ result, unit, className }) {
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
           )} ${unit}`}
+        />
+      </div>
+    </div>
+  );
+}
+
+function Result({ result, unit, className }) {
+  const { rcp26, rcp45, rcp85 } = result;
+  return (
+    <div className="row no-gutters mx-n1">
+      <div className="col-4 d-flex px-1">
+        <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_26}
+          value={`${Math.round(rcp26 * 100)}% chance`}
+        />
+      </div>
+      <div className="col-4 d-flex px-1">
+        <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_45}
+          value={`${Math.round(rcp45 * 100)}% chance`}
+        />
+      </div>
+      <div className="col-4 d-flex px-1">
+        <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_85}
+          value={`${Math.round(rcp85 * 100)}% chance`}
         />
       </div>
     </div>
