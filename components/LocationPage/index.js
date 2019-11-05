@@ -21,25 +21,9 @@ function formatNumberChange(diff, unit) {
   return `${marker} ${parseFloat(num.toFixed(1))} ${unit}`;
 }
 
-function DataHeader(props) {
+function DataNumber({ label, value, description, className }) {
   return (
-    <div className="row">
-      <div className="col-4">
-        <DataNumber label={SCENARIOS.RCP_26} />
-      </div>
-      <div className="col-4">
-        <DataNumber label={SCENARIOS.RCP_45} />
-      </div>
-      <div className="col-4">
-        <DataNumber label={SCENARIOS.RCP_85} />
-      </div>
-    </div>
-  );
-}
-
-function DataNumber({ label, value, description }) {
-  return (
-    <div>
+    <div className={classNames('DataNumber', className)}>
       <div className="small text-secondary font-weight-600">{label}</div>
       <div style={{ fontSize: 25 }}>{value}</div>
       <div className="small text-secondary">{description}</div>
@@ -79,21 +63,24 @@ export function FloodingSection(props) {
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌊 Coastal Flooding</h3>
       <div className="mt-4">
-        <div className="row">
-          <div className="col-4">
+        <div className="row no-gutters mx-n1">
+          <div className="col-4 d-flex px-1">
             <DataNumber
+              className="flex-1"
               label={SCENARIOS.RCP_26}
               value={`${Math.round(rcp26 * 100)}% chance > 5ft`}
             />
           </div>
-          <div className="col-4">
+          <div className="col-4 d-flex px-1">
             <DataNumber
+              className="flex-1"
               label={SCENARIOS.RCP_45}
               value={`${Math.round(rcp45 * 100)}% chance > 5ft`}
             />
           </div>
-          <div className="col-4">
+          <div className="col-4 d-flex px-1">
             <DataNumber
+              className="flex-1"
               label={SCENARIOS.RCP_85}
               value={`${Math.round(rcp85 * 100)}% chance > 5ft`}
             />
@@ -138,7 +125,6 @@ export function PrecipitationSection(props) {
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌧️ Precipitation</h3>
       <div className="mt-4">
-        <DataHeader />
         <AcisResult result={precipitation_total} unit="in" />
         <AcisResult result={precipitation_num_dry_days} unit="dry days" className="mt-2" />
       </div>
@@ -169,7 +155,6 @@ export function TemperatureSection(props) {
     <div>
       <h3 className="h1 font-weight-bold">🔥 Temperature</h3>
       <div className="mt-4">
-        <DataHeader />
         <AcisResult result={temp_avg} unit="°F" />
         <AcisResult result={temp_num_days_above_90f} unit="days >90°F" className="mt-2" />
         <AcisResult result={temp_num_days_above_100f} unit="days >100°F" className="mt-2" />
@@ -196,20 +181,24 @@ function AcisResult({ result, unit, className }) {
   }
   const { rcp45_mean, rcp85_mean, historical_average } = result;
   return (
-    <div className={classNames('row', className)}>
-      <div className="col-4">
-        <DataNumber value="--" />
+    <div className={classNames('row no-gutters', className)}>
+      <div className="col-4 d-flex">
+        <DataNumber className="flex-1" label={SCENARIOS.RCP_26} value="--" />
       </div>
-      <div className="col-4">
+      <div className="col-4 d-flex">
         <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_45}
           value={formatNumberChange(rcp45_mean - historical_average, unit)}
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
           )} ${unit}`}
         />
       </div>
-      <div className="col-4">
+      <div className="col-4 d-flex">
         <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_85}
           value={formatNumberChange(rcp85_mean - historical_average, unit)}
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
