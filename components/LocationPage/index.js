@@ -181,11 +181,11 @@ function AcisResult({ result, unit, className }) {
   }
   const { rcp45_mean, rcp85_mean, historical_average } = result;
   return (
-    <div className={classNames('row no-gutters', className)}>
-      <div className="col-4 d-flex">
+    <div className={classNames('row no-gutters mx-n1', className)}>
+      <div className="col-4 d-flex px-1">
         <DataNumber className="flex-1" label={SCENARIOS.RCP_26} value="--" />
       </div>
-      <div className="col-4 d-flex">
+      <div className="col-4 d-flex px-1">
         <DataNumber
           className="flex-1"
           label={SCENARIOS.RCP_45}
@@ -195,7 +195,7 @@ function AcisResult({ result, unit, className }) {
           )} ${unit}`}
         />
       </div>
-      <div className="col-4 d-flex">
+      <div className="col-4 d-flex px-1">
         <DataNumber
           className="flex-1"
           label={SCENARIOS.RCP_85}
