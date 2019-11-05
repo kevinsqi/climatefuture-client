@@ -124,11 +124,11 @@ export function PrecipitationSection(props) {
       <h3 className="h1 font-weight-bold">🌧️ Precipitation</h3>
       <div className="mt-5">
         <h4>How could the amount of precipitation (rain or snow) change?</h4>
-        <AcisResult className="mt-2" result={precipitation_total} unit="in" />
+        <RelativeResult className="mt-2" result={precipitation_total} unit="in" />
       </div>
       <div className="mt-4">
         <h4>How could the number of dry days change?</h4>
-        <AcisResult className="mt-2" result={precipitation_num_dry_days} unit="days" />
+        <RelativeResult className="mt-2" result={precipitation_num_dry_days} unit="days" />
       </div>
     </div>
   );
@@ -158,11 +158,11 @@ export function TemperatureSection(props) {
       <h3 className="h1 font-weight-bold">🔥 Temperature</h3>
       <div className="mt-5">
         <h4>How could the temperature change?</h4>
-        <AcisResult className="mt-2" result={temp_avg} unit="°F" />
+        <RelativeResult className="mt-2" result={temp_avg} unit="°F" />
       </div>
       <div className="mt-4">
         <h4>How many days could be hotter than 90°F?</h4>
-        <AcisResult
+        <RelativeResult
           className="mt-2"
           result={temp_num_days_above_90f}
           unit="days"
@@ -171,7 +171,7 @@ export function TemperatureSection(props) {
       </div>
       <div className="mt-4">
         <h4>How many days could be hotter than 100°F?</h4>
-        <AcisResult
+        <RelativeResult
           className="mt-2"
           result={temp_num_days_above_100f}
           unit="days"
@@ -193,7 +193,7 @@ export function TemperatureSection(props) {
   );
 }
 
-function AcisResult({ result, unit, className }) {
+function RelativeResult({ result, unit, className }) {
   if (!result) {
     return null;
   }
