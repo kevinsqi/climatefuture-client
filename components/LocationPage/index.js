@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Sidebar from './Sidebar';
 
 export const SCENARIOS = {
-  RCP_26: 'Optimistic case',
+  RCP_26: 'Best case',
   RCP_45: 'Status quo',
   RCP_85: 'Worst case',
 };
@@ -182,10 +182,10 @@ function AcisResult({ result, unit, className }) {
   const { rcp45_mean, rcp85_mean, historical_average } = result;
   return (
     <div className={classNames('row no-gutters mx-n1', className)}>
-      <div className="col-4 d-flex px-1">
+      <div className="col-12 col-md-4 d-flex px-1">
         <DataNumber className="flex-1" label={SCENARIOS.RCP_26} value="--" />
       </div>
-      <div className="col-4 d-flex px-1">
+      <div className="col-12 col-md-4 d-flex px-1">
         <DataNumber
           className="flex-1"
           label={SCENARIOS.RCP_45}
@@ -195,7 +195,7 @@ function AcisResult({ result, unit, className }) {
           )} ${unit}`}
         />
       </div>
-      <div className="col-4 d-flex px-1">
+      <div className="col-12 col-md-4 d-flex px-1">
         <DataNumber
           className="flex-1"
           label={SCENARIOS.RCP_85}
@@ -220,7 +220,7 @@ export function LocationPage({ geo, results, query }) {
           <Sidebar geo={geo} query={query} />
         </div>
         <div className="col-12 col-md-8 col-xl-9">
-          <div className="px-4 py-4">
+          <div className="px-3 px-md-4 py-4">
             <TemperatureSection results={results} />
             <div style={{ marginTop: 60 }}>
               <FloodingSection results={results} />
