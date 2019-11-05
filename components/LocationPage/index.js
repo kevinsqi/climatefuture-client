@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Sidebar from './Sidebar';
 
 export const SCENARIOS = {
-  RCP_26: 'Optimistic case',
+  RCP_26: 'Best case',
   RCP_45: 'Status quo',
   RCP_85: 'Worst case',
 };
@@ -21,25 +21,9 @@ function formatNumberChange(diff, unit) {
   return `${marker} ${parseFloat(num.toFixed(1))} ${unit}`;
 }
 
-function DataHeader(props) {
+function DataNumber({ label, value, description, className }) {
   return (
-    <div className="row">
-      <div className="col-4">
-        <DataNumber label={SCENARIOS.RCP_26} />
-      </div>
-      <div className="col-4">
-        <DataNumber label={SCENARIOS.RCP_45} />
-      </div>
-      <div className="col-4">
-        <DataNumber label={SCENARIOS.RCP_85} />
-      </div>
-    </div>
-  );
-}
-
-function DataNumber({ label, value, description }) {
-  return (
-    <div>
+    <div className={classNames('DataNumber', className)}>
       <div className="small text-secondary font-weight-600">{label}</div>
       <div style={{ fontSize: 25 }}>{value}</div>
       <div className="small text-secondary">{description}</div>
@@ -78,50 +62,30 @@ export function FloodingSection(props) {
   return (
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌊 Coastal Flooding</h3>
-      <div className="mt-4">
-        <div className="row">
-          <div className="col-4">
-            <DataNumber
-              label={SCENARIOS.RCP_26}
-              value={`${Math.round(rcp26 * 100)}% chance > 5ft`}
-            />
-          </div>
-          <div className="col-4">
-            <DataNumber
-              label={SCENARIOS.RCP_45}
-              value={`${Math.round(rcp45 * 100)}% chance > 5ft`}
-            />
-          </div>
-          <div className="col-4">
-            <DataNumber
-              label={SCENARIOS.RCP_85}
-              value={`${Math.round(rcp85 * 100)}% chance > 5ft`}
-            />
-          </div>
-        </div>
+      <div className="mt-5">
+        <h4>What's the chance of a 5+ foot flood within 1 year?</h4>
+        <Result result={coastal_flooding_single_year_5ft} />
       </div>
       {showAdvice && (
         <React.Fragment>
           <div className="mt-5">
-            <div className="small text-secondary font-weight-600">
-              How can I prepare short-term?
-            </div>
-            <div className="mt-2 font-weight-600 text-11">
-              <div>Have backup food, water, and medical supplies.</div>
-              <div>Unplug electrical equipment that might contact flood water.</div>
-              <div>Be careful of carbon monoxide poisoning when using portable generators.</div>
-            </div>
+            <h4>How can I prepare short-term?</h4>
+            <ul className="list-unstyled font-weight-600 small">
+              <li>Have backup food, water, and medical supplies.</li>
+              <li>Unplug electrical equipment that might contact flood water.</li>
+              <li>Be careful of carbon monoxide poisoning when using portable generators.</li>
+            </ul>
           </div>
           <div className="mt-5">
-            <div className="small text-secondary font-weight-600">How can I prepare long-term?</div>
-            <div className="mt-2 font-weight-600 text-11">
-              <div>
+            <h4>How can I prepare long-term?</h4>
+            <ul className="list-unstyled font-weight-600 small">
+              <li>
                 Check if your home is in a floodplain at <a href="https://msc.fema.gov">FEMA</a>.
-              </div>
-              <div>Check if your home was built with flood damage-resistant materials.</div>
-              <div>Check if there are community floodwalls or levees.</div>
-              <div>Support local government in developing flood control plans.</div>
-            </div>
+              </li>
+              <li>Check if your home was built with flood damage-resistant materials.</li>
+              <li>Check if there are community floodwalls or levees.</li>
+              <li>Support local government in developing flood control plans.</li>
+            </ul>
           </div>
         </React.Fragment>
       )}
@@ -137,10 +101,13 @@ export function PrecipitationSection(props) {
   return (
     <div className={props.className}>
       <h3 className="h1 font-weight-bold">🌧️ Precipitation</h3>
+      <div className="mt-5">
+        <h4>How could the amount of precipitation (rain or snow) change?</h4>
+        <RelativeResult className="mt-2" result={precipitation_total} unit="in" />
+      </div>
       <div className="mt-4">
-        <DataHeader />
-        <AcisResult result={precipitation_total} unit="in" />
-        <AcisResult result={precipitation_num_dry_days} unit="dry days" className="mt-2" />
+        <h4>How could the number of dry days change?</h4>
+        <RelativeResult className="mt-2" result={precipitation_num_dry_days} unit="days" />
       </div>
     </div>
   );
@@ -168,52 +135,100 @@ export function TemperatureSection(props) {
   return (
     <div>
       <h3 className="h1 font-weight-bold">🔥 Temperature</h3>
+      <div className="mt-5">
+        <h4>How could the temperature change?</h4>
+        <RelativeResult className="mt-2" result={temp_avg} unit="°F" />
+      </div>
       <div className="mt-4">
-        <DataHeader />
-        <AcisResult result={temp_avg} unit="°F" />
-        <AcisResult result={temp_num_days_above_90f} unit="days >90°F" className="mt-2" />
-        <AcisResult result={temp_num_days_above_100f} unit="days >100°F" className="mt-2" />
-        <AcisResult result={temp_num_days_below_32f} unit="days <32°F" className="mt-2" />
+        <h4>How many days could be hotter than 90°F?</h4>
+        <RelativeResult
+          className="mt-2"
+          result={temp_num_days_above_90f}
+          unit="days"
+          className="mt-2"
+        />
+      </div>
+      <div className="mt-4">
+        <h4>How many days could be hotter than 100°F?</h4>
+        <RelativeResult
+          className="mt-2"
+          result={temp_num_days_above_100f}
+          unit="days"
+          className="mt-2"
+        />
       </div>
       {showAdvice && (
-        <div className="mt-5">
-          <div className="small text-secondary font-weight-600">How can I prepare?</div>
-          <div className="mt-2 font-weight-600 text-11">
-            <div>🏠 Insulate windows.</div>
-            <div>🏠 Install temporary window reflectors.</div>
-            <div>🏠 Install cool or green roofs.</div>
-            <div>🌲 Support planting trees to provide shade and cooler air.</div>
-          </div>
+        <div className="mt-4">
+          <h4>How can I prepare?</h4>
+          <ul className="list-unstyled font-weight-600 small">
+            <li>🏠 Insulate windows.</li>
+            <li>🏠 Install temporary window reflectors.</li>
+            <li>🏠 Install cool or green roofs.</li>
+            <li>🌲 Support planting trees to provide shade and cooler air.</li>
+          </ul>
         </div>
       )}
     </div>
   );
 }
 
-function AcisResult({ result, unit, className }) {
+function RelativeResult({ result, unit, className }) {
   if (!result) {
     return null;
   }
   const { rcp45_mean, rcp85_mean, historical_average } = result;
   return (
-    <div className={classNames('row', className)}>
-      <div className="col-4">
-        <DataNumber value="--" />
+    <div className={classNames('row no-gutters mx-n1', className)}>
+      <div className="col-12 col-md-4 d-flex px-1">
+        <DataNumber className="flex-1" label={SCENARIOS.RCP_26} value="--" />
       </div>
-      <div className="col-4">
+      <div className="col-12 col-md-4 d-flex px-1">
         <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_45}
           value={formatNumberChange(rcp45_mean - historical_average, unit)}
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
           )} ${unit}`}
         />
       </div>
-      <div className="col-4">
+      <div className="col-12 col-md-4 d-flex px-1">
         <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_85}
           value={formatNumberChange(rcp85_mean - historical_average, unit)}
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
           )} ${unit}`}
+        />
+      </div>
+    </div>
+  );
+}
+
+function Result({ result, unit, className }) {
+  const { rcp26, rcp45, rcp85 } = result;
+  return (
+    <div className="row no-gutters mx-n1">
+      <div className="col-4 d-flex px-1">
+        <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_26}
+          value={`${Math.round(rcp26 * 100)}% chance`}
+        />
+      </div>
+      <div className="col-4 d-flex px-1">
+        <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_45}
+          value={`${Math.round(rcp45 * 100)}% chance`}
+        />
+      </div>
+      <div className="col-4 d-flex px-1">
+        <DataNumber
+          className="flex-1"
+          label={SCENARIOS.RCP_85}
+          value={`${Math.round(rcp85 * 100)}% chance`}
         />
       </div>
     </div>
@@ -231,7 +246,7 @@ export function LocationPage({ geo, results, query }) {
           <Sidebar geo={geo} query={query} />
         </div>
         <div className="col-12 col-md-8 col-xl-9">
-          <div className="px-4 py-4">
+          <div className="px-3 px-md-4 py-4">
             <TemperatureSection results={results} />
             <div style={{ marginTop: 60 }}>
               <FloodingSection results={results} />

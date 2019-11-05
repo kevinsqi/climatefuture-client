@@ -6,6 +6,11 @@ h1, .h1 {
   font-size: 2em;
 }
 
+h4, .h4 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
 a {
   color: #212529 !important;
   text-decoration: underline;
@@ -14,13 +19,6 @@ a {
 /*
  * Utilities
  */
-
-.NavLink--active {
-  color: #fff !important;
-  background-color: #222;
-  padding: 3px 8px;
-  border-radius: 3px;
-}
 
 .no-underline,
 a.no-underline {
@@ -38,6 +36,10 @@ a.no-underline {
 .style-uppercase {
   font-size: 13px;
   text-transform: uppercase;
+}
+
+.width-full {
+  width: 100%;
 }
 
 .height-full {
@@ -62,6 +64,10 @@ a.no-underline {
   }
 }
 
+.font-weight-500 {
+  font-weight: 500;
+}
+
 .font-weight-600 {
   font-weight: 600;
 }
@@ -69,3 +75,21 @@ a.no-underline {
 .text-11 {
   font-size: 1.1em;
 }
+
+/*
+ * Components
+ */
+
+.NavLink--active {
+  color: #fff !important;
+  background-color: #222;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.DataNumber {
+  padding: 12px 12px;
+  background-color: #f7f6f3;
+  border-radius: 3px;
+}
+
