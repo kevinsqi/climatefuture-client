@@ -36,8 +36,8 @@ function Home() {
                 </form>
 
                 <p className="mt-3 text-center text-secondary small">
-                  Try <a href="/location/san-francisco">san francisco</a>,{' '}
-                  <a href="/location/new-york-ny">new york</a>, or{' '}
+                  Try <a href="/location/new-york-ny">new york</a>,{' '}
+                  <a href="/location/los-angeles">los angeles</a>, or{' '}
                   <a href="/location/02111">02111</a>
                 </p>
               </div>
