@@ -29,6 +29,12 @@ function About() {
                   </a>{' '}
                   greenhouse gas concentration scenarios.
                 </p>
+                <p>
+                  If you're interested in helping with the project, email Kevin at{' '}
+                  <a href="mailto:iqnivek@gmail.com">iqnivek@gmail.com</a>. We're primarily looking
+                  for people with backgrounds in climate science, or people interested in finding
+                  data sources to integrate into the site&mdash;but anyone is welcome to help!
+                </p>
                 <div className="mt-5">
                   <a href="/">← Home</a>
                 </div>

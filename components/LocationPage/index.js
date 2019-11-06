@@ -35,17 +35,26 @@ export function Methodology(props) {
   return (
     <div className={props.className}>
       <div className="small text-secondary">
+        <div className="font-weight-bold">Methodology</div>
         <div>
-          <strong>Methodology</strong>
-        </div>
-        <div>
-          "{SCENARIOS.RCP_26}" uses RCP 2.6, "{SCENARIOS.RCP_45}" uses RCP 4.5, and "
-          {SCENARIOS.RCP_85}" uses RCP 8.5.
-        </div>
-        <div>
-          <a className="text-secondary" href="https://github.com/kevinsqi/climatefuture">
-            View source code
+          ClimateFuture uses public data sources with projections on future conditions based on{' '}
+          <a
+            className="text-secondary"
+            href="https://en.wikipedia.org/wiki/Representative_Concentration_Pathway"
+          >
+            RCP greenhouse gas concentration scenarios
           </a>{' '}
+          modeled by the IPCC. "{SCENARIOS.RCP_26}" corresponds to RCP 2.6, "{SCENARIOS.RCP_45}" to
+          RCP 4.5, and "{SCENARIOS.RCP_85}" to RCP 8.5. ClimateFuture is an open source
+          project&mdash;
+          <a className="text-secondary" href="https://github.com/kevinsqi/climatefuture">
+            view the source code on Github
+          </a>{' '}
+          or{' '}
+          <a className="text-secondary" href="/about">
+            learn more about it
+          </a>
+          .
         </div>
       </div>
     </div>
