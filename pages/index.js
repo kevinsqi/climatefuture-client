@@ -27,6 +27,7 @@ function Home() {
                 <form className="mt-4" onSubmit={onSubmit}>
                   <input
                     className="form-control form-control-lg text-center"
+                    autoFocus
                     type="text"
                     value={address}
                     placeholder="City, address, or zip"
