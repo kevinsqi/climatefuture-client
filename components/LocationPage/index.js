@@ -9,6 +9,15 @@ export const SCENARIOS = {
   RCP_85: 'Worst case',
 };
 
+const CHART_SCALES = {
+  year: {
+    min: 0,
+    minLabel: '0 days',
+    max: 365,
+    maxLabel: '365 days',
+  },
+};
+
 function formatTempChange(diff) {
   const num = (Number(diff) * 9) / 5;
   const marker = Math.abs(num) < 0.1 ? '' : num > 0 ? '▲' : '▼';
@@ -156,6 +165,7 @@ export function TemperatureSection(props) {
           result={temp_num_days_above_90f}
           unit="days"
           className="mt-2"
+          chartScale={CHART_SCALES.year}
         />
       </div>
       <div className="mt-4">
@@ -165,6 +175,7 @@ export function TemperatureSection(props) {
           result={temp_num_days_above_100f}
           unit="days"
           className="mt-2"
+          chartScale={CHART_SCALES.year}
         />
       </div>
       {showAdvice && (
@@ -182,18 +193,24 @@ export function TemperatureSection(props) {
   );
 }
 
-function HorizontalBarChart({ values }) {
-  const nums = values.map(({ value }) => value);
-  const maxValue = Math.max(...nums);
-  const percentages = nums.map((num) => num / maxValue);
+function HorizontalBarChart({ values, scale }) {
+  const range = scale.max - scale.min;
   return (
     <div className="width-full">
       {values.map(({ label, value }) => {
-        const percentage = (value / maxValue) * 100;
+        const percentage = ((value - scale.min) / (scale.max - scale.min)) * 100;
         return (
-          <div className="mt-1">
-            <div className="small text-secondary">{label}</div>
-            <div style={{ background: '#b9b297', width: `${percentage}%`, height: 8 }} />
+          <div className="mt-1" style={{ fontSize: 11 }}>
+            <div
+              className="d-inline-block v-align-middle"
+              style={{
+                background: '#b9b297',
+                width: `${percentage}%`,
+                minWidth: 2,
+                height: '1em',
+              }}
+            />
+            <div className="d-inline-block v-align-middle small text-secondary pl-2">{label}</div>
           </div>
         );
       })}
@@ -201,7 +218,7 @@ function HorizontalBarChart({ values }) {
   );
 }
 
-function RelativeResult({ result, unit, className }) {
+function RelativeResult({ result, unit, className, chartScale }) {
   if (!result) {
     return null;
   }
@@ -220,12 +237,15 @@ function RelativeResult({ result, unit, className }) {
             historical_average.toFixed(1),
           )} ${unit}`}
         >
-          <HorizontalBarChart
-            values={[
-              { label: 'Historical average', value: historical_average },
-              { label: 'Projected', value: rcp45_mean },
-            ]}
-          />
+          {chartScale && (
+            <HorizontalBarChart
+              scale={chartScale}
+              values={[
+                { label: 'Historical average', value: historical_average },
+                { label: 'Projected', value: rcp45_mean },
+              ]}
+            />
+          )}
         </DataNumber>
       </div>
       <div className="col-12 col-md-4 d-flex px-1">
@@ -236,7 +256,17 @@ function RelativeResult({ result, unit, className }) {
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
           )} ${unit}`}
-        />
+        >
+          {chartScale && (
+            <HorizontalBarChart
+              scale={chartScale}
+              values={[
+                { label: 'Historical average', value: historical_average },
+                { label: 'Projected', value: rcp85_mean },
+              ]}
+            />
+          )}
+        </DataNumber>
       </div>
     </div>
   );

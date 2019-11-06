@@ -76,6 +76,10 @@ a.no-underline {
   font-size: 1.1em;
 }
 
+.v-align-middle {
+  vertical-align: middle;
+}
+
 /*
  * Components
  */
