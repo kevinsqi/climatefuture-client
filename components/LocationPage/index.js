@@ -21,12 +21,13 @@ function formatNumberChange(diff, unit) {
   return `${marker} ${parseFloat(num.toFixed(1))} ${unit}`;
 }
 
-function DataNumber({ label, value, description, className }) {
+function DataNumber({ label, value, description, className, children }) {
   return (
     <div className={classNames('DataNumber', className)}>
       <div className="small text-secondary font-weight-600">{label}</div>
       <div style={{ fontSize: 25 }}>{value}</div>
       <div className="small text-secondary">{description}</div>
+      <div>{children}</div>
     </div>
   );
 }
@@ -181,6 +182,25 @@ export function TemperatureSection(props) {
   );
 }
 
+function HorizontalBarChart({ values }) {
+  const nums = values.map(({ value }) => value);
+  const maxValue = Math.max(...nums);
+  const percentages = nums.map((num) => num / maxValue);
+  return (
+    <div className="width-full">
+      {values.map(({ label, value }) => {
+        const percentage = (value / maxValue) * 100;
+        return (
+          <div className="mt-1">
+            <div className="small text-secondary">{label}</div>
+            <div style={{ background: '#b9b297', width: `${percentage}%`, height: 8 }} />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function RelativeResult({ result, unit, className }) {
   if (!result) {
     return null;
@@ -199,7 +219,14 @@ function RelativeResult({ result, unit, className }) {
           description={`Relative to historical average of ${parseFloat(
             historical_average.toFixed(1),
           )} ${unit}`}
-        />
+        >
+          <HorizontalBarChart
+            values={[
+              { label: 'Historical average', value: historical_average },
+              { label: 'Projected', value: rcp45_mean },
+            ]}
+          />
+        </DataNumber>
       </div>
       <div className="col-12 col-md-4 d-flex px-1">
         <DataNumber
