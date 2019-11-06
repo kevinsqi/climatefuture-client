@@ -19,7 +19,7 @@ function Home() {
             <div className="text-center">
               <div className="h1">🔥</div>
               <h1 className="d-inline-block h2 font-weight-bold">ClimateFuture</h1>
-              <sup className="superscript">Alpha</sup>
+              <sup className="superscript">Beta</sup>
               <p>See the projected impacts of climate change for where you live.</p>
             </div>
             <div className="row">
@@ -34,11 +34,10 @@ function Home() {
                   />
                 </form>
 
-                <p className="mt-2 text-center text-secondary small">
-                  Data is sparse right now&mdash;the richest data is in{' '}
-                  <a href="/location/san-francisco">san francisco</a>,{' '}
-                  <a href="/location/dallas">dallas</a>, and{' '}
-                  <a href="/location/new-york">new york</a>.
+                <p className="mt-3 text-center text-secondary small">
+                  Try <a href="/location/san-francisco">san francisco</a>,{' '}
+                  <a href="/location/new-york-ny">new york</a>, or{' '}
+                  <a href="/location/02111">02111</a>
                 </p>
               </div>
               <div style={{ paddingBottom: 200 }} />
