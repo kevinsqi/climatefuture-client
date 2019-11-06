@@ -161,10 +161,10 @@ export function TemperatureSection(props) {
         <div className="mt-4">
           <h4>How can I prepare?</h4>
           <ul className="list-unstyled font-weight-600 small">
-            <li>🏠 Insulate windows.</li>
-            <li>🏠 Install temporary window reflectors.</li>
-            <li>🏠 Install cool or green roofs.</li>
-            <li>🌲 Support planting trees to provide shade and cooler air.</li>
+            <li>Insulate windows.</li>
+            <li>Install temporary window reflectors.</li>
+            <li>Install cool or green roofs.</li>
+            <li>Support planting trees to provide shade and cooler air.</li>
           </ul>
         </div>
       )}
