@@ -30,7 +30,7 @@ function Home() {
                     autoFocus
                     type="text"
                     value={address}
-                    placeholder="City, address, or zip"
+                    placeholder="Your city or zipcode"
                     onChange={(event) => setAddress(event.target.value)}
                   />
                 </form>
