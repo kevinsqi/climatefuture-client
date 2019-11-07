@@ -4,7 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import queryString from 'query-string';
 
 import Head from '../../components/Head';
-import { LocationPage } from '../../components/LocationPage';
+import LocationPage from '../../components/LocationPage';
 
 const DEFAULT_YEAR = 2080;
 

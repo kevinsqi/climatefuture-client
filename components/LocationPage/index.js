@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import Sidebar from './Sidebar';
 
-export const SCENARIOS = {
+const SCENARIOS = {
   RCP_26: 'Best case',
   RCP_45: 'Middle case',
   RCP_85: 'Worst case',
@@ -55,7 +55,7 @@ function DataNumber({ label, value, description, className, children }) {
   );
 }
 
-export function Methodology(props) {
+function Methodology(props) {
   return (
     <div className={props.className}>
       <div className="small text-secondary">
@@ -85,7 +85,7 @@ export function Methodology(props) {
   );
 }
 
-export function FloodingSection(props) {
+function FloodingSection(props) {
   const { coastal_flooding_single_year_5ft } = props.results;
   if (!coastal_flooding_single_year_5ft) {
     return null;
@@ -126,7 +126,7 @@ export function FloodingSection(props) {
   );
 }
 
-export function PrecipitationSection(props) {
+function PrecipitationSection(props) {
   const { precipitation_total, precipitation_num_dry_days } = props.results;
   if (!precipitation_num_dry_days && !precipitation_total) {
     return null;
@@ -164,7 +164,7 @@ export function PrecipitationSection(props) {
   );
 }
 
-export function TemperatureSection(props) {
+function TemperatureSection(props) {
   const {
     temp_num_days_above_90f,
     temp_num_days_above_100f,
@@ -347,7 +347,7 @@ function Result({ result, unit, className }) {
   );
 }
 
-export function LocationPage({ geo, results, query }) {
+export default function LocationPage({ geo, results, query }) {
   return (
     <div className="container-fluid">
       <div className="row">
