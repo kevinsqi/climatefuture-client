@@ -139,7 +139,7 @@ export function PrecipitationSection(props) {
         <RelativeResult
           className="mt-2"
           result={precipitation_total}
-          unit="in"
+          unit="inches"
           chartScale={CHART_SCALES.precipitation}
         />
       </div>
