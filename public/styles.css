@@ -54,6 +54,10 @@ a.no-underline {
   flex: 1;
 }
 
+.color-brown {
+  color: #6d6149;
+}
+
 .bg-cream {
   background-color: #f7f6f3;
 }
@@ -74,6 +78,10 @@ a.no-underline {
 
 .text-11 {
   font-size: 1.1em;
+}
+
+.v-align-middle {
+  vertical-align: middle;
 }
 
 /*
