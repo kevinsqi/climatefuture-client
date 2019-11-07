@@ -240,7 +240,7 @@ function HorizontalBarChart({ values, scale }) {
       {values.map(({ label, value }) => {
         const percentage = ((value - min) / (max - min)) * 100;
         return (
-          <div className="small">
+          <div className="small" key={value}>
             <div
               className="d-inline-block v-align-middle mr-2"
               style={{
