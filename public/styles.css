@@ -54,6 +54,10 @@ a.no-underline {
   flex: 1;
 }
 
+.color-brown {
+  color: #6d6149;
+}
+
 .bg-cream {
   background-color: #f7f6f3;
 }
