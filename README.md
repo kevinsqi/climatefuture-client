@@ -1,4 +1,8 @@
-## ClimateFuture
+## ClimateFuture client
+
+This is the frontend client that powers [climatefuture.io](https://www.climatefuture.io). The backend code is at [kevinsqi/climatefuture](https://github.com/kevinsqi/climatefuture).
+
+![screenshot of location page](./public/screenshot-orlando.png)
 
 ## Setup
 
