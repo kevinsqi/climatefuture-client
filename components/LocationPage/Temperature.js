@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HorizontalBarChart from './HorizontalBarChart';
+import { CHART_SCALES } from './constants';
 import RelativeResult from './RelativeResult';
 
 export default function Temperature(props) {
@@ -31,7 +31,7 @@ export default function Temperature(props) {
           className="mt-2"
           result={temp_avg}
           unit="°F"
-          chartScale={HorizontalBarChart.SCALES.temperature}
+          chartScale={CHART_SCALES.temperature}
         />
       </div>
       <div className="mt-4">
@@ -41,7 +41,7 @@ export default function Temperature(props) {
           result={temp_num_days_above_90f}
           unit="days"
           className="mt-2"
-          chartScale={HorizontalBarChart.SCALES.year}
+          chartScale={CHART_SCALES.year}
         />
       </div>
       <div className="mt-4">
@@ -51,7 +51,7 @@ export default function Temperature(props) {
           result={temp_num_days_above_100f}
           unit="days"
           className="mt-2"
-          chartScale={HorizontalBarChart.SCALES.year}
+          chartScale={CHART_SCALES.year}
         />
       </div>
       {showAdvice && (

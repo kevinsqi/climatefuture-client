@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HorizontalBarChart from './HorizontalBarChart';
+import { CHART_SCALES } from './constants';
 import RelativeResult from './RelativeResult';
 
 export default function Precipitation(props) {
@@ -17,7 +17,7 @@ export default function Precipitation(props) {
           className="mt-2"
           result={precipitation_total}
           unit="inches"
-          chartScale={HorizontalBarChart.SCALES.precipitation}
+          chartScale={CHART_SCALES.precipitation}
         />
       </div>
       <div className="mt-4">
@@ -34,7 +34,7 @@ export default function Precipitation(props) {
           className="mt-2"
           result={precipitation_num_dry_days}
           unit="days"
-          chartScale={HorizontalBarChart.SCALES.year}
+          chartScale={CHART_SCALES.year}
         />
       </div>
     </div>

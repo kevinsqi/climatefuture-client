@@ -28,25 +28,4 @@ function HorizontalBarChart({ values, scale }) {
   );
 }
 
-HorizontalBarChart.SCALES = {
-  year: {
-    min: 0,
-    minLabel: '0 days',
-    max: 365,
-    maxLabel: '365 days',
-  },
-  temperature: {
-    min: 32,
-    minLabel: '32 F',
-    max: 100,
-    maxLabel: '100 F',
-  },
-  precipitation: {
-    min: 0,
-    minLabel: '0 inches',
-    max: 100,
-    maxLabel: '100 inches',
-  },
-};
-
 export default HorizontalBarChart;
