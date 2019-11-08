@@ -22,8 +22,9 @@ function About() {
                   can take.
                 </p>
                 <p>
-                  The data is aggregated from multiple public data sources, and are oriented around
-                  the{' '}
+                  We also hope to be a centralized place to view climate projection data. The data
+                  used is already aggregated from multiple public data sources, and are oriented
+                  around the{' '}
                   <a href="https://en.wikipedia.org/wiki/Representative_Concentration_Pathway">
                     IPCC's RCP 2.6, RCP 4.5, and RCP 8.5
                   </a>{' '}
