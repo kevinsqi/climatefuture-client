@@ -15,7 +15,9 @@ export default function Flooding(props) {
       <h3 className="h1 font-weight-bold">🌊 Flooding</h3>
       <div className="mt-4">
         <h4>What's the chance of a 5+ foot coastal flood within 1 year?</h4>
-        <Result result={coastal_flooding_single_year_5ft} />
+        <div className="mt-3">
+          <Result result={coastal_flooding_single_year_5ft} />
+        </div>
       </div>
       {showAdvice && (
         <React.Fragment>

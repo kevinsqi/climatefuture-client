@@ -30,14 +30,14 @@ const RESULT_COMPONENTS = {
   },
   temp_num_days_above_90f: ({ result }) => {
     return (
-      <Item label="How many days could be hotter than 90°F?">
+      <Item label="How many more 90°F+ degree days could there be?">
         <RelativeResult result={result} unit="days" chartScale={CHART_SCALES.year} />
       </Item>
     );
   },
   temp_num_days_above_100f: ({ result }) => {
     return (
-      <Item label="How many days could be hotter than 100°F?">
+      <Item label="How many more 100°F+ degree days could there be?">
         <RelativeResult result={result} unit="days" chartScale={CHART_SCALES.year} />
       </Item>
     );
@@ -52,7 +52,7 @@ const RESULT_COMPONENTS = {
   precipitation_num_dry_days: ({ result }) => {
     return (
       <Item
-        label="How could the number of dry days change?"
+        label="How many more dry days could there be?"
         description={
           "Changes in the number of dry days per year (days when there's less than 0.01 inches of snow or rain) can indicate a tendency toward drier or wetter conditions."
         }
