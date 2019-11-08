@@ -14,8 +14,8 @@ export const CHART_SCALES = {
   precipitation: {
     min: 0,
     minLabel: '0 inches',
-    max: 100,
-    maxLabel: '100 inches',
+    max: 200,
+    maxLabel: '200 inches',
   },
 };
 
