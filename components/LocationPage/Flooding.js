@@ -12,14 +12,14 @@ export default function Flooding(props) {
   const showAdvice = Number(rcp45) >= 0.1;
   return (
     <div className={props.className}>
-      <h3 className="h1 font-weight-bold">🌊 Coastal Flooding</h3>
-      <div className="mt-5">
-        <h4>What's the chance of a 5+ foot flood within 1 year?</h4>
+      <h3 className="h1 font-weight-bold">🌊 Flooding</h3>
+      <div className="mt-4">
+        <h4>What's the chance of a 5+ foot coastal flood within 1 year?</h4>
         <Result result={coastal_flooding_single_year_5ft} />
       </div>
       {showAdvice && (
         <React.Fragment>
-          <div className="mt-5">
+          <div className="mt-4">
             <h4>How can I prepare short-term?</h4>
             <ul className="list-unstyled font-weight-600 small">
               <li>Have backup food, water, and medical supplies.</li>
@@ -27,7 +27,7 @@ export default function Flooding(props) {
               <li>Be careful of carbon monoxide poisoning when using portable generators.</li>
             </ul>
           </div>
-          <div className="mt-5">
+          <div className="mt-4">
             <h4>How can I prepare long-term?</h4>
             <ul className="list-unstyled font-weight-600 small">
               <li>
