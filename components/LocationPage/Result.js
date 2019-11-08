@@ -11,11 +11,11 @@ function Item({ label, description, children }) {
       {description && (
         <div className="row">
           <div className="col-12 col-md-8">
-            <p>{description}</p>
+            <p className="mb-0">{description}</p>
           </div>
         </div>
       )}
-      <div className="mt-2">{children}</div>
+      <div className="mt-3">{children}</div>
     </div>
   );
 }
