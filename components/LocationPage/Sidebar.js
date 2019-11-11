@@ -1,5 +1,28 @@
 import React from 'react';
 import classNames from 'classnames';
+import queryString from 'query-string';
+
+function getStaticMapURL(geo) {
+  const { lat, lng } = geo.geometry.location;
+  const query = {
+    center: `${lat},${lng}`,
+    zoom: 5,
+    // key: ... use env var
+    size: '500x200',
+    style: [
+      `feature:administrative|element:labels|visibility:off`,
+      `feature:landscape|element:all|visibility:simplified|lightness:0|color:0xf7f6f3`,
+      `feature:poi|element:all|visibility:simplified|saturation:-100|lightness:30`,
+      `feature:poi|element:labels|visibility:off`,
+      `feature:road|element:all|visibility:off`,
+      `feature:transit|element:all|visibility:off`,
+      `feature:water|element:labels|visibility:off`,
+      `feature:water|element:geometry|saturation:-100|lightness:-20`,
+    ],
+  };
+
+  return `https://maps.googleapis.com/maps/api/staticmap?${queryString.stringify(query)}`;
+}
 
 function Sidebar({ geo, query }) {
   const [address, setAddress] = React.useState(query.address);
@@ -47,6 +70,13 @@ function Sidebar({ geo, query }) {
             );
           })}
         </div>
+      </div>
+      <div className="pt-4">
+        <img
+          className="width-full rounded border"
+          alt={`map of ${geo.formatted_address}`}
+          src={getStaticMapURL(geo)}
+        />
       </div>
     </div>
   );
